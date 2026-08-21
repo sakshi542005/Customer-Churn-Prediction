@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Customer Churn Prediction</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<div class="main-container">
+
+    <div class="header">
+        <h1>📊 Customer Churn Prediction System</h1>
+        <p>Powered by XGBoost & FastAPI</p>
+    </div>
+
+    <!-- <div class="stats">
+
+        <div class="card">
+            <h3>Model</h3>
+            <p>XGBoost</p>
+        </div>
+
+        <div class="card">
+            <h3>Accuracy</h3>
+            <p>81%</p>
+        </div>
+
+        <div class="card">
+            <h3>Features</h3>
+            <p>10</p>
+        </div>
+
+    </div> -->
+
+    <div class="form-card">
+
+        <form action="/predict" method="post">
+
+            <div class="form-grid">
+
+                <div>
+                    <label>👤 Account Age</label>
+                    <input type="number" name="AccountAge" required>
+                </div>
+
+                <div>
+                    <label>💰 Monthly Charges</label>
+                    <input type="number" step="0.01" name="MonthlyCharges" required>
+                </div>
+
+                <div>
+                    <label>📺 Viewing Hours Per Week</label>
+                    <input type="number" step="0.01" name="ViewingHoursPerWeek" required>
+                </div>
+
+                <div>
+                    <label>⭐ User Rating</label>
+                    <input type="number" step="0.1" name="UserRating" required>
+                </div>
+
+                <div>
+                    <label>🎫 Support Tickets Per Month</label>
+                    <input type="number" name="SupportTicketsPerMonth" required>
+                </div>
+
+                <div>
+                    <label>📚 Watchlist Size</label>
+                    <input type="number" name="WatchlistSize" required>
+                </div>
+
+                <div>
+                    <label>📦 Subscription Type</label>
+                    <select name="SubscriptionType" required>
+                        <option value="Basic">Basic</option>
+                        <option value="Standard">Standard</option>
+                        <option value="Premium">Premium</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label>📱 Multi Device Access</label>
+                    <select name="MultiDeviceAccess" required>
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label>💳 Payment Method</label>
+                    <select name="PaymentMethod" required>
+                        <option value="Electronic check">Electronic check</option>
+                        <option value="Credit card">Credit card</option>
+                        <option value="Mailed check">Mailed check</option>
+                        <option value="Bank transfer">Bank transfer</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label>🎬 Genre Preference</label>
+                    <select name="GenrePreference" required>
+                        <option value="Comedy">Comedy</option>
+                        <option value="Fantasy">Fantasy</option>
+                        <option value="Drama">Drama</option>
+                        <option value="Sci-Fi">Sci-Fi</option>
+                        <option value="Action">Action</option>
+                    </select>
+                </div>
+
+            </div>
+
+            <button type="submit">
+                🔮 Predict Churn Risk
+            </button>
+
+        </form>
+
+        {% if prediction %}
+
+        <div class="result-card">
+
+            <h2>{{ prediction }}</h2>
+
+            <h3>
+                Churn Probability: {{ probability }}%
+            </h3>
+
+            <div class="progress">
+                <div
+                    class="progress-bar"
+                    style="width: {{ probability }}%;">
+                </div>
+            </div>
+
+        </div>
+
+        {% endif %}
+
+    </div>
+
+    <div class="about">
+
+        <h2>About This Model</h2>
+
+        <p>
+            This system predicts whether a customer is likely to churn
+            using customer behavior, subscription details, engagement
+            metrics and payment information.
+        </p>
+
+        <ul>
+            <li>Algorithm: XGBoost</li>
+            <li>Dataset: Subscription Service Churn Dataset</li>
+            <li>Target Variable: Churn</li>
+            <li>Features Used: 10</li>
+            <li>Accuracy: 81%</li>
+        </ul>
+
+    </div>
+
+    <div class="footer">
+        Developed by Sakshi Girase
+    </div>
+
+</div>
+
+</body>
+</html>
